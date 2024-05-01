@@ -5,6 +5,7 @@ const cdate = document.getElementById('date');
 
 const relogio = setInterval(function time(){
     let date = new Date();
+    let day = date.getUTCDate();
     let hrs = date.getHours();
     let min = date.getMinutes();
     let sec = date.getSeconds();
@@ -12,11 +13,13 @@ const relogio = setInterval(function time(){
     const month = ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"];
     const dayNames = ["segunda-feira", "terça-feira", "quarta-feira", "quinta-feira", "sexta-feira", "sábado", "domingo"];
 
-    let vDate = date.getUTCDate() + "/" + month[date.getUTCMonth()] + "/" + date.getFullYear() + ", " + dayNames[date.getDay() - 1];
+    if(day < 10) day = '0' + day;
+    let vDate = day + "/" + month[date.getUTCMonth()] + "/" + date.getFullYear() + ", " + dayNames[date.getDay() - 1];
 
     if(hrs <= 9) hrs = '0' + hrs;
     if(min <= 9) min = '0' + min;
     if(sec <= 9) sec = '0' + sec;
+
 
     hours.textContent = hrs;
     minutes.textContent = min;
